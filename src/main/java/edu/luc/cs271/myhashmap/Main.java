@@ -24,7 +24,7 @@ public class Main {
     for (int i = 0; i < 10 && i < arr.size(); i += 1) {
       System.out.println(arr.get(i));
       int endtime = System.currentTimeMillis();
-      System.out.println(endtime-begintime);
+      System.out.println(endtime - begintime);
     }
   }
 }
