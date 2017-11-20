@@ -139,7 +139,7 @@ public class MyHashMap<K, V> implements Map<K, V> {
       table.set(i, new LinkedList<>());
     }
   }
-  /** The resulting keySet is not "backed" by the Map, so we keep it unmodifiable. */
+  /*The resulting keySet is not "backed" by the Map, so we keep it unmodifiable. */
   @Override
   public Set<K> key;
     final Set<K> result = new HashSet<>();
