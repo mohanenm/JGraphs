@@ -1,58 +1,66 @@
-# COMP 271 002 F17 Lab 9 (Week 11)
+COMP 271 002 F17 Lab 10 (Weeks 14-15)
 
-# Team project
+Team project
 
 Work in teams of two.
 
-# Objectives
+Objectives
 
 An understanding of the following concepts and techniques:
 
-- Set and Map ADTs
-- custom implementations of standard interfaces
-- building more advanced data structures from simpler predefined ones
-- sorting arrays and ArrayLists (parameterized by a strategy)
-- basic experiments to measure performance
+Graph ADT
+Graph algorithms
+Libraries for working with graphs
+Instructions
 
-# Instructions
-
-In this lab, you will have the opportunity to implement the `Map` interface using an `ArrayList` of `LinkedList`s.
-Then you will be able to stress-test and performance-test your implementation based on the previous lab.
+In this lab, you will have the opportunity to represent a geographical map as a graph and manipulate this graph in various useful ways.
 
 Specifically:
 
-1. Complete the TODO items in the various sources until the tests pass.
-1. Download this book (or use the file you already downloaded): https://archive.org/stream/lesmisrables01unkngoog/lesmisrables01unkngoog_djvu.txt.
-1. Use the program to determine the 10 most frequent words and their frequencies in this text by redirecting stdin from the downloaded file:
+Create a new Gradle-based project based on one of your earlier projects:
 
-        ./build/scripts/cs2-lab11-hashtable-java < lesmisrables01unkngoog_djvu.txt
-        time in ms: 762
-        the=33282
-        of=18016
-        and=12849
-        a=12717
-        to=12450
-        in=9387
-        was=7788
-        that=6601
-        he=6202
-        his=5529
+define a main class
+define a separate class for the country codes (see below)
+JGraphT library dependency - visit this page and put the dependency information for Gradle in the dependencies section of your build.gradle
+don't forget to include a .gitignore
+remove everything you don't need
+Pick any country in the world (or state/province/territory/department within a single country) that has at least five neighbors with which it shares a border of length > 0 (a corner doesn't count).
 
-1. Answer the following questions in Answers.md:
-    - Try using a `TreeMap` and a `HashMap` instead of `MyHashMap`.
-        1. Are the resulting word frequencies any different?
-        1. Is the time performance any different? If so, how would you rank the three implementations (in increasing order of time complexity)?
-    - How are `%` and `Math.floorMod` different? Which works more reliably for computing a hash table index?
-    - What is the time complexity of `MyHashMap.size()`, and how could you make it much more efficient?
-    - How does this implementation compare to one where you would directly use your linked `Node` class from the earlier assignment? Answer briefly in terms of ease of implementation, correctness, reliability, and performance.
+Define string constants for the country and its immediate neighbors, preferably using the corresponding ISO 3166-1 alpha-2 codes.
 
-# Grading
+ final static String AT = "Austria";
+ final static String DE = "Germany";
+ ...
+Using the JGraphT library, define a graph representing the map limited to the country you picked and its immediate neighbors. Concretely, define a graph instance, add a vertex for each country, then add an edge for each pair of neighboring countries. (Because this is an undirected graph, you need to add only one edge for each pair of neighboring countries.)
 
-- 0.5 correct project structure (based on Gradle)
-- 0.5 submission via GitHub (including multiple commits over time)
-- 2.5 completion of items marked TODO in `src/main` and correct behavior
-- 1.5 written part
-    - 1.2 responses to the questions above
-    - 0.3 grammar, style, formatting
+ final Graph<String, DefaultEdge> myMap = new SimpleGraph<>(DefaultEdge.class);
+ myMap.addVertex(AT);
+ myMap.addVertex(DE);
+ ...
+ myMap.addEdge(AT, DE);
+ ...
+Then print the resulting graph.
 
-*5 points TOTAL*
+Traverse the graph using the following different traversal algorithms (in org.grapht.traverse):
+
+BreadthFirstIterator
+ClosestFirstIterator
+DepthFirstIterator
+RandomWalkIterator
+For each of these algorithms, use both your central country and a country on the edge of your map as starting points. For each combination of country and traversal algorithm, print the resulting iteration sequence.
+
+Written part: Discuss the differences among the results. Does the starting point make a difference?
+
+Using JGraphT's GreedyColoring or other coloring algorithm, find out how many colors are required to color your map in such a way that no two adjacent countries have the same color. That is, generate and print the coloring. Fun fact: For any idealized map (planar graph), this requires at most four colors.
+
+Written part: Give two or three examples of how/why a real-world map might require more than four colors.
+
+Grading
+
+0.5 correct project structure (based on Gradle)
+0.5 submission via GitHub (including multiple commits over time)
+3 completion of items listed above and correct behavior
+1 written part (in Answers.md)
+0.8 responses to the questions embedded above
+0.2 grammar, style, formatting
+5 points TOTAL
