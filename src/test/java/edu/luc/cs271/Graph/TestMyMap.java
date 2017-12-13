@@ -1,6 +1,6 @@
 
 mport java.util.*;
-
+public main(){
 public static void main(String[] args){
    Graph g = null;
    int n = 0;

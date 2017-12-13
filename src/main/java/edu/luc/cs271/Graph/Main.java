@@ -1,9 +1,15 @@
-public main {
+import org.jgrapht.*;
+import org.jgrapht.graph.*;
+
+public main{
+  public static void main(final String[] args) {
    
    final static String CH = "Chad";//a country in Africa who has at least 5 countries bordering it (Sudan, Cameroon, Niger, Nigeria, Libya, and C.A.R.)
    final static String CAR = "Central African Republic";
-   
-   final Graph<String, DefaultEdge> myMap = new SimpleGraph<>(DefaultEdge.class);
+   public class CountryCodes {
+
+    public Graph<String, DefaultEdge> Map() {
+        
    myMap.addVertex(CH);
    myMap.addVertex(CAR);
    myMap.addEdge(CH, CAR);
@@ -23,8 +29,9 @@ public main {
    myMap.addEdge(CM, CAR);
    myMap.addEdge(CAR, SD);
    myMap.addEdge(SD, LY);
-   System.out.print(myMap);
    
+   return myMap;
+    }
    public void breadthFirst(); //double check
 {
         // BFS uses Queue data structure
@@ -39,7 +46,7 @@ public main {
                 child.visited=true;
                 printNode(child);
                 queue.add(child);
-            }
+             }
         }
         // Clear visited property of nodes
         clearNodes();
@@ -63,8 +70,7 @@ public main {
                 child.visited = true;
                 printNode(child);
                 s.push(child);
-            }
-            else {
+            }else {
                 s.pop();
             }
         }
@@ -72,9 +78,7 @@ public main {
         clearNodes();
     }
 
-
-   
-   public ListGraph(int numV, boolean directed) {
+   public void  ListGraph(int numV, boolean directed) {
    super(numV, directed);
    edges = new List[numV];
    for (int i = 0; i < numV; i++) {
@@ -108,5 +112,5 @@ public Edge getEdge(int source, int dest) {
    // Assert: All edges for source checked.
    return target; // Desired edge not found.
 }
-   
+ }
 }

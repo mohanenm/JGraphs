@@ -1,17 +1,10 @@
+<h3>Discuss the differences among the results.</h3>
+ 
+BreadthFirst and Closest have the same order resulting iteration sequence
+Depth has the opposite of breadth. With random the resulting iteration sequence yielded is unique each time.
 
-<h3>Are the resulting word frequencies any different?</h3><br>
-No, they are no different. If they were different, it would be due to inefficient implementation of myHashmap
+Does the starting point make a difference?
+starting point does matter.
+Using JGraphT's GreedyColoring or other coloring algorithm, find out how many colors are required to color your map in such a way that no two adjacent countries have the same color. That is, generate and print the coloring. Fun fact: For any idealized map (planar graph), this requires at most four colors.
 
-<h3>Is the time performance any different? If so, how would you rank the three implementations (in increasing order of time complexity)?</h3><br>
- 1. HashMap <br> 
- 2. MyHashMap <br> 
- 3. TreeMap  <br> 
-
-<h1>How are % and Math.floorMod different? Which works more reliably for computing a hash table index?</h1><br>
-
-math.floormod would work better for our purposes, because it knows how to handle and will never return negative numbers. Modulo alone will not do this, it cannot effectively handle negative numbers. 
-
-<h1>What is the time complexity of MyHashMap.size(), and how could you make it much more efficient?</h1><br>
-It is O(n). 
-<h1>How does this implementation compare to one where you would directly use your linked Node class from the earlier assignment? Answer briefly in terms of ease of implementation, correctness, reliability, and performance.</h1><br>
-In terms of all aforementioned terms, they seem to be fairly equivalent. MyHashMap is somewhat more reliable, but there is not any major difference. 
+Written part: Give two or three examples of how/why a real-world map might require more than four colors.
