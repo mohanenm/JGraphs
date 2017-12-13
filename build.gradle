@@ -4,13 +4,15 @@ buildscript {
     }
     dependencies {
         classpath 'com.github.ben-manes:gradle-versions-plugin:0.15.0'
-        classpath 'gradle.plugin.com.github.sherter.google-java-format:google-java-format-gradle-plugin:0.6'
+       
+        //classpath 'gradle.plugin.com.github.sherter.google-java-format:google-java-format-gradle-plugin:0.6'
+  
     }
 }
 
 apply plugin: 'application'
 apply plugin: 'com.github.ben-manes.versions'
-apply plugin: 'com.github.sherter.google-java-format'
+//apply plugin: 'com.github.sherter.google-java-format'
 
 libsDirName = 'lib' // simple workaround for error in startScripts task
 mainClassName = 'edu.luc.cs271.myhashmap.Main' // TODO change this setting to match your main class
@@ -31,8 +33,8 @@ dependencies {
 
 
 dependencies {
-// https://mvnrepository.com/artifact/org.jgrapht/jgrapht
-compile group: 'org.jgrapht', name: 'jgrapht', version: '1.0.1', ext: 'pom'
+    testCompile group: 'junit', name: 'junit', version: '4.+'
+    compile 'org.jgrapht:jgrapht-core:1.1.0'
 }
 
 tasks.withType(JavaCompile) { 
@@ -48,6 +50,11 @@ run {
     standardOutput = System.out
 }
 
+/*
 googleJavaFormat {
     toolVersion = '1.4'
+    exclude '/home/ubuntu/workspace/lab1415-emohan/jgrapht-1.1.0/source/jgrapht-demo/src/main/java/org/jgrapht/demo/JGraphAdapterDemo.java'
+ 
 }
+*/
+
