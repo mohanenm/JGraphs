@@ -23,7 +23,7 @@ public static void main(final String[] args) {
     myMap.ClosestFirstIterator();
     System.out.println("\n" + "Depth-First Algorithm:");
     myMap.DepthFirstIterator();
-    System.out.println("\n" + "Searching by Random-Walk Algorithm:");
+    System.out.println("\n" + "Random-Walk Algorithm:");
     myMap.RandomWalkIterator();
     System.out.println("\n" + "Coloring:");
     myMap.Coloring();
