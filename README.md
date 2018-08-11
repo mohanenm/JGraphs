@@ -6,9 +6,15 @@
  ...
  myMap.addEdge(AT, DE);
  ...
+ 
+ 
 Then print the resulting graph.
 
+
+
 Traverse the graph using the following different traversal algorithms (in org.grapht.traverse):
+
+
 
 BreadthFirstIterator
 ClosestFirstIterator
